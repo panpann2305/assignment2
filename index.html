@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Doom</title>
     <!-- add the font family of your choice -->
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
@@ -13,16 +13,18 @@
   <body>
     <!-- Header Section -->
     <header>
-      <h1>Media Player Website</h1>
+        <div id= "topbar">
+            <span id= "text">UNIQUE • UNCONVENTIONAL • LIMITLESS • HIGH-ENERGY • TECHNO-INSPIRED • FUTURISTIC • CHAOTIC • UNRESTRAINED • ENGAGING • MULTI-DIMENSIONAL •&nbsp;</span>
+      </div>
     </header>
 
     <!-- Navigation Section -->
     <nav>
       <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Videos</a></li>
-        <li><a href="#">Music</a></li>
-        <li><a href="#">Playlists</a></li>
+        <li><a href="#">Track 1</a></li>
+        <li><a href="#">Track 2</a></li>
+        <li><a href="#">Track 3</a></li>
+        <li><a href="#">Track 4</a></li>
         <!-- Add or remove navigation items as needed -->
       </ul>
     </nav>
@@ -38,22 +40,42 @@
           />
         </video>
         <div class="custom-controls">
+           <button id="presong" onclick="Presong()">
+            <img
+              id="pre-song-img"
+              src="icons8-skip-to-start-30.png"
+              alt="Pre song"
+              width="30"
+              height="30"
+            />
+          </button>
           <button id="play-pause-btn" onclick="togglePlayPause()">
             <img
               id="play-pause-img"
-              src="https://img.icons8.com/ios-glyphs/30/play--v1.png"
+              src="icons8-play-30.png"
               alt="Play Button"
-              width="24"
-              height="24"
+              width="30"
+              height="30"
+            />
+          </button>
+          <button id="nextsong" onclick="Nextsong()">
+            <img
+              id="next-song-img"
+              src="icons8-end-30.png"
+              alt="Next song"
+              width="30"
+              height="30"
             />
           </button>
           <!-- add the missing buttons or functionality here -->
+
           <div class="progress-bar">
             <span id="progress-bar-fill"></span>
           </div>
         </div>
       </div>
 
+      
       <!-- Additional Content Section -->
       <section>
         <h2>Additional Content</h2>

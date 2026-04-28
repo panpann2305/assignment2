@@ -1,5 +1,5 @@
 :root {
-  --primary-bg-color: #f4f4f4;
+  --primary-bg-color: #000000;
   --text-color: #333;
   --main-bg-color: #333;
   --main-text-color: #fff;
@@ -12,6 +12,7 @@ p,
 ul {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 body {
@@ -36,13 +37,27 @@ body {
 
 /* Header styling */
 header {
+  font-family: "Syne Mono";
   background-color: var(--main-bg-color);
   color: var(--main-text-color);
-  padding: 10px 0;
-  text-align: center;
+  padding: 0px;
+  width: 100%;
+  font-size: 200%;
+}
+
+#topbar span {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+#top {
+  overflow: hidden;
   width: 100%;
 }
 
+#topbar {
+  display: flex;
+}
 /* Navigation styling */
 nav {
   margin-top: 20px;
@@ -50,6 +65,7 @@ nav {
 }
 
 nav ul {
+  font-family: "Syne Mono";
   list-style: none;
   display: flex;
   justify-content: center;
@@ -61,7 +77,7 @@ nav ul li {
 
 nav a {
   text-decoration: none;
-  color: var(--text-color);
+  color: var(--main-text-color);
 }
 
 /* Media player styling */
@@ -79,15 +95,16 @@ nav a {
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  margin-top: 10px;
+  margin-top: 30px;
   width: 100%;
 }
 
 .custom-controls button {
-  background-color: var(--main-btn-bg-color);
+  background-color: rgb(147, 5, 149);
   color: var(--main-text-color);
   border: none;
-  padding: 8px 12px;
+  border-radius: 100px;
+  padding: 10px 13px;
   cursor: pointer;
   font-size: 16px;
   display: flex;
@@ -112,6 +129,7 @@ nav a {
 
 /* Footer styling */
 footer {
+  font-family: "Syne Mono";
   background-color: var(--main-bg-color);
   color: var(--main-text-color);
   text-align: center;
