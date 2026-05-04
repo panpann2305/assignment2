@@ -29,11 +29,6 @@ body {
 /* Add additional styles as needed */
 
 /* Create a container for the main content */
-.container {
-  max-width: 1000px;
-  width: 100%;
-  padding: 10px;
-}
 
 /* Header styling */
 header {
@@ -45,19 +40,15 @@ header {
   font-size: 200%;
 }
 
-#topbar span {
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-#top {
-  overflow: hidden;
-  width: 100%;
-}
-
 #topbar {
   display: flex;
+  white-space: nowrap;
 }
+
+#topbar span {
+  display: inline-block;
+}
+
 /* Navigation styling */
 nav {
   margin-top: 20px;
@@ -69,6 +60,7 @@ nav ul {
   list-style: none;
   display: flex;
   justify-content: center;
+  margin: 0px;
 }
 
 nav ul li {
@@ -80,23 +72,31 @@ nav a {
   color: var(--main-text-color);
 }
 
+.main-part {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: space-between;
+
+}
 /* Media player styling */
 .media-player {
-  width: 100%;
-  margin: 0 auto;
+  width: 60%;
+  display: flex;
+  align-content: center;
+  margin: 20px 0px 0px 0px;
 }
 
 .media-player video {
   max-width: 100%;
 }
 
+
 .custom-controls {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 30px;
-  width: 100%;
+  align-content: center;
+  gap: 1.5rem;
+  margin-top: 20px;
 }
 
 .custom-controls button {
@@ -104,18 +104,25 @@ nav a {
   color: var(--main-text-color);
   border: none;
   border-radius: 100px;
-  padding: 10px 13px;
+  padding: 10px 12px;
   cursor: pointer;
   font-size: 16px;
-  display: flex;
-  align-items: center;
+}
+
+.custom-controls .no-style {
+  background-color: rgb(0, 0, 0);
+  color: var(--main-text-color);
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 .progress-bar {
-  width: 100%;
+  width: 60%;
   height: 10px;
   background-color: #ddd;
-  margin-top: 10px;
+  margin-top: 20px;
+  margin-bottom: 30px;
   overflow: hidden;
 }
 
@@ -132,7 +139,17 @@ footer {
   font-family: "Syne Mono";
   background-color: var(--main-bg-color);
   color: var(--main-text-color);
-  text-align: center;
-  padding: 10px 0;
+  padding: 0px;
   width: 100%;
+  font-size: 200%;
 }
+
+#bottombar {
+  display: flex;
+  white-space: nowrap;
+}
+
+#bo†tombar span {
+  display: inline-block;
+}
+
