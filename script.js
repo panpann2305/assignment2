@@ -1,7 +1,7 @@
 const video = document.querySelector("#custom-video-player");
+const image = document.querySelector("#image")
 const playPauseBtn = document.querySelector("#play-pause-btn");
 const playPauseImg = document.querySelector("#play-pause-img");
-const NextsongImg = document.querySelector("#next-song-img");
 const progressBar = document.querySelector("#progress-bar-fill");
 
 video.removeAttribute("controls");
@@ -77,3 +77,37 @@ function animate2() {
 }
 
 animate2 ()
+
+
+//fullscreen//
+const fullscreenButton = document.getElementById("fullscreen-button");
+console.log(fullscreenButton);
+
+fullscreenButton.addEventListener("click", toggleFullscreen);
+
+function toggleFullscreen() {
+  if (!document.fullscreenElement) {
+    video.requestFullscreen();
+  } else {
+    document.exitFullscreen();
+  }
+}
+
+//swapmode//
+const swapButton = document.getElementById ("swap-button")
+console.log(swapButton, video, image);
+
+let isVideoMode = true;
+
+swapButton.onclick = () => {
+  isVideoMode = !isVideoMode;
+
+  if (isVideoMode) {
+    video.style.display = "block";
+    image.style.display = "none";
+  } else {
+    video.style.display = "none";
+    image.style.display = "block";
+  }
+};
+

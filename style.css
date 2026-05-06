@@ -80,11 +80,46 @@ nav a {
 
 }
 /* Media player styling */
+
 .media-player {
   width: 60%;
-  display: flex;
   align-content: center;
   margin: 20px 0px 0px 0px;
+  position: relative;
+}
+
+.media-player:fullscreen {
+  width: 100vw;
+  height: 100vh;
+  background: black;
+}
+
+#custom-video-player {
+  width: 100%;
+  display: block;
+}
+
+#image {
+  width: 100%;
+  display: none;
+}
+
+.buttononscreen {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  gap: 5px;
+  margin-right: 5px;
+}
+
+#fullscreen-button, #swap-button {
+  bottom: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.656);
+  border: none;
+  cursor: pointer;
+  padding: 2px;
 }
 
 .media-player video {

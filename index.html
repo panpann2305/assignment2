@@ -9,7 +9,7 @@
     <link rel="icon" href="doom.ico" type="doomicon">
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer></script>
+
   </head>
   <body>
     <!-- Header Section -->
@@ -25,26 +25,48 @@
         <li><a href="#">Track 1</a></li>
         <li><a href="#">Track 2</a></li>
         <li><a href="#">Track 3</a></li>
-        <li><a href="#">Track 4</a></li>
+        <li1><a href="#">Track 4</a></li1>
         <!-- Add or remove navigation items as needed -->
       </ul>
     </nav>
 
     <div class="main-part">
         <div class="media-player">
-            <video id="custom-video-player" controls>
+            <video id="custom-video-player">
                 <source
                     src="https://thelongesthumstore.sgp1.cdn.digitaloceanspaces.com/IM-2250/miac.mp4"
                     type="video/mp4"
                 />
             </video>
+            <img id="image" src="doom.png" style="width: 852px; height: auto;"/>
+
+            <div class= "buttononscreen">
+                <button id="swap-button" class="no-style">
+                    <img
+                        id="swap-img"
+                        src="icons8-swap-30.png"
+                        alt="Next song"
+                        width="28"
+                        height="28"
+                    />
+                </button>
+                <button id="fullscreen-button" class="no-style">
+                    <img
+                        id="fullscreen-img"
+                        src="icons8-full-screen-30.png"
+                        alt="Next song"
+                        width="28"
+                        height="28"
+                    />
+                </button>
+            </div>
         </div>
         <div class= custom-controls>   
-            <button id="nextsong" onclick="Nextsong()" class="no-style">
+            <button id="shuffle" onclick="Shuffle()" class="no-style">
                 <img
-                    id="next-song-img"
+                    id="shuffle-img"
                     src="icons8-shuffle-30.png"
-                    alt="Next song"
+                    alt="Shuffle"
                     width="30"
                     height="30"
                 />
@@ -76,11 +98,11 @@
                     height="30"
                 />
             </button>
-            <button id="nextsong" onclick="Nextsong()" class="no-style">
+            <button id="loop" onclick="Loop()" class="no-style">
                 <img
-                    id="next-song-img"
+                    id="loop-img"
                     src="icons8-repeat-30.png"
-                    alt="Next song"
+                    alt="Loop"
                     width="28"
                     height="28"
                 />
@@ -97,6 +119,7 @@
             <span id= "text2">UNIQUE • UNCONVENTIONAL • LIMITLESS • HIGH-ENERGY • TECHNO-INSPIRED • FUTURISTIC • CHAOTIC • UNRESTRAINED • ENGAGING • MULTI-DIMENSIONAL •&nbsp;</span>
       </div>
     </footer>
+    <script src="script.js" defer></script>
   </body>
 </html>
 
