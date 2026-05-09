@@ -3,7 +3,7 @@
   --text-color: #333;
   --main-bg-color: #333;
   --main-text-color: #fff;
-  --main-btn-bg-color: #938989;
+  --main-btn-bg-color: #8a8a8a;
 }
 
 body,
@@ -16,19 +16,21 @@ ul {
 }
 
 body {
-  font-family: "Arial", sans-serif;
-  background-color: var(--primary-bg-color);
-  color: var(--text-color);
-  line-height: 1.6;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
 }
 
-/* Add additional styles as needed */
-
-/* Create a container for the main content */
+.background{
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  transition: 0.5s ease;
+}
 
 /* Header styling */
 header {
@@ -40,9 +42,11 @@ header {
   font-size: 200%;
 }
 
+/* Top bar */
 #topbar {
   display: flex;
   white-space: nowrap;
+  padding: 5px;
 }
 
 #topbar span {
@@ -60,27 +64,32 @@ nav ul {
   list-style: none;
   display: flex;
   justify-content: center;
-  margin: 0px;
+  margin-right: 0px;
 }
 
-nav ul li {
+nav ul li1,li2,li3 {
   margin-right: 20px;
 }
 
-nav a {
+nav a1,a2,a3,a4 {
   text-decoration: none;
   color: var(--main-text-color);
 }
 
+nav a1:hover,nav a2:hover,nav a3:hover,nav a4:hover {
+  color: var(--main-btn-bg-color);
+  cursor: pointer;
+}
+
+/* Main part */
 .main-part {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-items: space-between;
-
 }
-/* Media player styling */
 
+/* Media player styling */
 .media-player {
   width: 60%;
   align-content: center;
@@ -94,16 +103,23 @@ nav a {
   background: black;
 }
 
+/* Video */
 #custom-video-player {
   width: 100%;
   display: block;
 }
 
+.media-player video {
+  max-width: 100%;
+}
+
+/* Album cover */
 #image {
   width: 100%;
   display: none;
 }
 
+/* Button on screen */
 .buttononscreen {
   position: absolute;
   bottom: 10px;
@@ -122,11 +138,7 @@ nav a {
   padding: 2px;
 }
 
-.media-player video {
-  max-width: 100%;
-}
-
-
+/* Buttons */
 .custom-controls {
   display: flex;
   align-content: center;
@@ -135,38 +147,66 @@ nav a {
 }
 
 .custom-controls button {
-  background-color: rgb(147, 5, 149);
+  background-color: var(--main-bg-color);
   color: var(--main-text-color);
   border: none;
   border-radius: 100px;
   padding: 10px 12px;
   cursor: pointer;
-  font-size: 16px;
+}
+
+button img,button {
+  transition: transform 0.2s ease;
+}
+
+button:hover img,button:hover {
+  transform: scale(1.05);
 }
 
 .custom-controls .no-style {
-  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
   color: var(--main-text-color);
   border: none;
   cursor: pointer;
   font-size: 16px;
 }
 
+/* Progress bar */
 .progress-bar {
   width: 60%;
   height: 10px;
   background-color: #ddd;
   margin-top: 20px;
   margin-bottom: 30px;
-  overflow: hidden;
+  overflow: visible;
+  position: relative;
+  cursor: pointer;
 }
 
-.progress-bar span {
+#progress-bar-fill {
   display: block;
   height: 100%;
   background-color: var(--main-bg-color);
   width: 0;
-  transition: width 0.3s ease;
+  transition: none;
+}
+
+#progress-bar-handle {
+  width: 16px;
+  height: 16px;
+  background: var(--main-btn-bg-color);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translate(-50%, -50%);
+  transition: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.progress-bar:hover #progress-bar-handle {
+  opacity: 1;
 }
 
 /* Footer styling */
@@ -182,6 +222,8 @@ footer {
 #bottombar {
   display: flex;
   white-space: nowrap;
+  padding: 5px;
+
 }
 
 #bo†tombar span {

@@ -11,34 +11,31 @@
     <link rel="stylesheet" href="style.css" />
 
   </head>
-  <body>
+  <body class ="body">
     <!-- Header Section -->
     <header>
       <div id= "topbar">
-            <span id= "text1">DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING •&nbsp;</span>
+            <span id= "texttopbar">DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING •&nbsp;</span>
         </div>
     </header>
 
+    <div class="background"></div>
+
     <!-- Navigation Section -->
     <nav>
-      <ul>
-        <li><a href="#">Track 1</a></li>
-        <li><a href="#">Track 2</a></li>
-        <li><a href="#">Track 3</a></li>
-        <li1><a href="#">Track 4</a></li1>
+      <ul class="trackbutton">
+        <li1><a1 id= "track1btn">Track 1</a1></li1>
+        <li2><a2 id= "track2btn">Track 2</a3></li2>
+        <li3><a3 id= "track3btn">Track 3</a3></li3>
+        <li4><a4 id= "track4btn">Track 4</a4></li4>
         <!-- Add or remove navigation items as needed -->
       </ul>
     </nav>
 
     <div class="main-part">
         <div class="media-player">
-            <video id="custom-video-player">
-                <source
-                    src="https://thelongesthumstore.sgp1.cdn.digitaloceanspaces.com/IM-2250/miac.mp4"
-                    type="video/mp4"
-                />
-            </video>
-            <img id="image" src="doom.png" style="width: 852px; height: auto;"/>
+            <video id="custom-video-player"> </video>
+            <img id="image" src="doom.png" style="width: 840px; height: auto;"/>
 
             <div class= "buttononscreen">
                 <button id="swap-button" class="no-style">
@@ -61,17 +58,17 @@
                 </button>
             </div>
         </div>
-        <div class= custom-controls>   
-            <button id="shuffle" onclick="Shuffle()" class="no-style">
+        <div class= "custom-controls">   
+            <button id="shuffle-button" class="no-style">
                 <img
                     id="shuffle-img"
-                    src="icons8-shuffle-30.png"
+                    src="icons8-shuffle-off-30.png"
                     alt="Shuffle"
                     width="30"
                     height="30"
                 />
             </button> 
-            <button id="presong" onclick="Presong()" class="no-style">
+            <button id="presong" class="no-style">
                 <img
                     id="pre-song-img"
                     src="icons8-skip-to-start-30.png"
@@ -89,7 +86,7 @@
                     height="25"
                 />
             </button>
-            <button id="nextsong" onclick="Nextsong()" class="no-style">
+            <button id="nextsong" class="no-style">
                 <img
                     id="next-song-img"
                     src="icons8-end-30.png"
@@ -98,10 +95,10 @@
                     height="30"
                 />
             </button>
-            <button id="loop" onclick="Loop()" class="no-style">
+            <button id="loop-button" class="no-style">
                 <img
                     id="loop-img"
-                    src="icons8-repeat-30.png"
+                    src="icons8-loop-off-30.png"
                     alt="Loop"
                     width="28"
                     height="28"
@@ -110,21 +107,56 @@
             
         </div>
         <div class="progress-bar">
-            <span id="progress-bar-fill"></span>
+            <div id="progress-bar-handle"></div>
+            <div id="progress-bar-fill"></div>
         </div>
     </div>
     <!-- Footer Section -->
     <footer>
       <div id= "bottombar">
-            <span id= "text2">UNIQUE • UNCONVENTIONAL • LIMITLESS • HIGH-ENERGY • TECHNO-INSPIRED • FUTURISTIC • CHAOTIC • UNRESTRAINED • ENGAGING • MULTI-DIMENSIONAL •&nbsp;</span>
+            <span id= "textbottombar">UNIQUE • UNCONVENTIONAL • LIMITLESS • HIGH-ENERGY • TECHNO-INSPIRED • FUTURISTIC • CHAOTIC • UNRESTRAINED • ENGAGING • MULTI-DIMENSIONAL •&nbsp;</span>
       </div>
     </footer>
     <script src="script.js" defer></script>
   </body>
 </html>
 
-<!--<p>&copy; 2024 Media Player Website. All rights reserved.</p>
-      <a href="https://icons8.com/icon/59862/play">Play</a> icon by
-      <a href="https://icons8.com">Icons8</a>
-      <a href="https://icons8.com/icon/61012/pause">Pause</a> icon by
-      <a href="https://icons8.com">Icons8</a>-->
+
+<!-- REFERENCES
+
+ <p>&copy; 2024 Media Player Website. All rights reserved.</p>
+
+ ICON
+    <a href="https://icons8.com/icon/59862/play">Play</a> icon by
+        <a href="https://icons8.com">Icons8</a>
+    <a href="https://icons8.com/icon/61012/pause">Pause</a> icon by
+        <a href="https://icons8.com">Icons8</a>
+    <a href="https://icons8.com/icon/91479/shuffle">Shuffle</a> icon by
+        <a href="https://icons8.com">Icons8</a>
+    <a href="https://icons8.com/icon/91481/repeat">Repeat</a> icon by
+        <a href="https://icons8.com">Icons8</a>
+    <a href="https://icons8.com/icon/91474/end">End</a> icon by
+        <a href="https://icons8.com">Icons8</a>
+    <a href="https://icons8.com/icon/91482/skip-to-start">SkiptoStart</a> icon by
+        <a href="https://icons8.com">Icons8</a>
+    <a href="https://icons8.com/icon/JB_Yf69N96pv/swap">Swap</a> icon by
+        <a href="https://icons8.com">Icons8</a>
+    <a href="https://icons8.com/icon/69155/full-screen">FullScreen</a> icon by
+        <a href="https://icons8.com">Icons8</a>    
+VIDEO
+    Track 1: src="https://thelongesthumstore.sgp1.cdn.digitaloceanspaces.com/IM-2250/miac.mp4"
+    Track 2: Chill & Relax with Visual Effects (2025) ‘Hypnotic VJ LOOP NEON Tunnel Blue Purple Abstract Background Video 4k Cool Visuals Party Lights’, YouTube, https://youtu.be/l1CDzMYV9qM?si=N_RGjivsjcwOqlo0, accessed 5 May 2026.
+    Track 3: Chill & Relax with Visual Effects (2025) ‘Flowy Hypnotic VJ LOOP NEON Red Yellow Abstract Background Video 4k Cool Visuals Sleep Lights’, YouTube, https://youtu.be/k7bHiSXUunA?si=hpk_6J2XSpJPIV2e, accessed 5 May 2026.
+    Track 4: Chill & Relax with Visual Effects (2021) ‘VJ LOOP NEON Green Teal Metallic Abstract Background Video Simple Lines Pattern 4k Screensaver’, YouTube, https://youtu.be/uTG4gbt2Eyg?si=QresSBkPA_w7yNl2, accessed 5 May 2026.
+MUSIC
+    Track 2: The Soundlings (2025) My Synth Bae, Youtube Audio Library
+    Track 3: Ryan Stasik, Kanika Moore (2025) Revive The Light, Youtube Audio Library
+    Track 4: Geographer (2019) Synergy, Youtube Audio Library
+ALBUM COVER (I create it)
+    Nguyen A (2026) Doom Music Album Cover
+BACKGROUND (I create it)
+    Track 1: Nguyen A (2026) Doom Pink Background
+    Track 2: Nguyen A (2026) Doom Blue Background
+    Track 3: Nguyen A (2026) Doom Yellow Background
+    Track 4: Nguyen A (2026) Doom Green Background
+-->

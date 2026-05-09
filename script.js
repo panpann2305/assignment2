@@ -1,9 +1,106 @@
+const player = document.querySelector (".body")
 const video = document.querySelector("#custom-video-player");
 const image = document.querySelector("#image")
 const playPauseBtn = document.querySelector("#play-pause-btn");
 const playPauseImg = document.querySelector("#play-pause-img");
 const progressBar = document.querySelector("#progress-bar-fill");
+const progressBarHandle = document.querySelector ("#progress-bar-handle")
+const progressBarCont = document.querySelector (".progress-bar")
+const track1btn = document.querySelector ("#track1btn")
+const track2btn = document.querySelector ("#track2btn")
+const track3btn = document.querySelector ("#track3btn")
+const track4btn = document.querySelector ("#track4btn")
 
+//tracks//
+track1btn.addEventListener("click", (e) => {
+  currentTrack = 0;
+  loadTrack(currentTrack);
+});
+
+track2btn.addEventListener("click", (e) => {
+  currentTrack = 1;
+  loadTrack(currentTrack);
+});
+
+track3btn.addEventListener("click", (e) => {
+  currentTrack = 2;
+  loadTrack(currentTrack);
+});
+
+track4btn.addEventListener("click", (e) => {
+  currentTrack = 3;
+  loadTrack(currentTrack);
+});
+
+const tracks = [
+  {
+    bartext: "DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING •&nbsp",
+    video: "https://thelongesthumstore.sgp1.cdn.digitaloceanspaces.com/IM-2250/miac.mp4",
+    background: "doompink.PNG",
+  },
+  {
+    bartext: "DOOM: TRACK 2 IS PLAYING • DOOM: TRACK 2 IS PLAYING • DOOM: TRACK 2 IS PLAYING • DOOM: TRACK 2 IS PLAYING • DOOM: TRACK 2 IS PLAYING • DOOM: TRACK 2 IS PLAYING • DOOM: TRACK 2 IS PLAYING • DOOM: TRACK 2 IS PLAYING • DOOM: TRACK 2 IS PLAYING • DOOM: TRACK 2 IS PLAYING •&nbsp",
+    video: "https://archive.org/download/doomblue/doomblue.mp4",
+    background: "doomblue.PNG",
+  },
+  {
+    bartext: "DOOM: TRACK 3 IS PLAYING • DOOM: TRACK 3 IS PLAYING • DOOM: TRACK 3 IS PLAYING • DOOM: TRACK 3 IS PLAYING • DOOM: TRACK 3 IS PLAYING • DOOM: TRACK 3 IS PLAYING • DOOM: TRACK 3 IS PLAYING • DOOM: TRACK 3 IS PLAYING • DOOM: TRACK 3 IS PLAYING • DOOM: TRACK 3 IS PLAYING •&nbsp",
+    video: "https://archive.org/download/doomyellow/doomyellow.mp4",
+    background: "doomyellow.PNG",
+  },
+  {
+    bartext: "DOOM: TRACK 4 IS PLAYING • DOOM: TRACK 4 IS PLAYING • DOOM: TRACK 4 IS PLAYING • DOOM: TRACK 4 IS PLAYING • DOOM: TRACK 4 IS PLAYING • DOOM: TRACK 4 IS PLAYING • DOOM: TRACK 4 IS PLAYING • DOOM: TRACK 4 IS PLAYING • DOOM: TRACK 4 IS PLAYING • DOOM: TRACK 4 IS PLAYING •&nbsp",
+    video: "https://archive.org/download/doomgreen/doomgreen.mp4",
+    background: "doomgreen.PNG",
+  }
+];
+
+let currentTrack = 0;
+let mode = "loop";
+
+const bartext = document.querySelector("#texttopbar");
+const background = document.querySelector(".background");
+
+//(I used ChatGPT to help me with this part and fix the needed details)//
+function loadTrack(index) {
+
+  const track = tracks[index];
+
+  bartext.textContent = track.bartext; //take the bartext element//
+
+  video.src = track.video; //take the video element//
+
+  background.style.backgroundImage =
+    `url(${track.background})`; //take the background element//
+
+  video.play();
+}
+
+document.querySelector("#nextsong")
+.addEventListener("click", () => { //click the next song button//
+
+  currentTrack++; //change to the next track//
+
+  if(currentTrack >= tracks.length){
+    currentTrack = 0;
+  } //there are 4 track (0,1,2,3), but there are no track no4, so after track 3 it will return to the first track (track 0)//
+
+  loadTrack(currentTrack); //load the current track//
+});
+
+document.querySelector("#presong")
+.addEventListener("click", () => {
+
+  currentTrack--; //change to the previous track//
+
+  if(currentTrack < 0){
+    currentTrack = tracks.length - 1;
+  } //since the first track is 0, it can't be currentTrack-1, so it needs to be tracks.length (4) - 1, which will change to track 4 (3) when click the "presong" button at track 1 (0)//
+
+  loadTrack(currentTrack); //load the current track//
+});
+
+//video//
 video.removeAttribute("controls");
 // playPauseBtn.addEventListener("click", togglePlayPause);
 video.addEventListener("timeupdate", updateProgressBar);
@@ -16,17 +113,38 @@ function togglePlayPause() {
     playPauseImg.src = "icons8-play-30.png";
   }
 }
+
+//progressbar//
 function updateProgressBar() {
   const value = (video.currentTime / video.duration) * 100;
-  progressBar.style.width = value + "%";
+  progressBar.style.width = value + "%"; //change the duratin to %//
+  progressBarHandle.style.left = value + "%";
 }
 
-// Add other functionalities here
+let isDragging = false; //the start status always be no dragging to prevent of the unpurpose dragging when move mouse)
+progressBarCont.addEventListener ("mousedown", () => {
+  isDragging = true; //mousedown => can drag//
+})
+document.addEventListener ("mouseup", () => {
+  isDragging = false; //mouseup => can't drag//
+})
 
-//top bar animation (I used ChatGPT to help me and fix the needed parts)
+document.addEventListener("mousemove", (e) => {
+  if (!isDragging) return; //when mouse is moving but don't dragging anything then nothing will happen (prevent of the unpurpose dragging when move mouse)//
+
+//(I used ChatGPT to help me with this part and fix the needed details)//
+  const rect = progressBarCont.getBoundingClientRect();
+  const x = e.clientX - rect.left; //x is the time position on the bar, e.clientX is the mouse position on screen, rect.left is the start point of the bar//
+  const percent = Math.max(0, Math.min(1, x / rect.width));
+//the handle can only move from between 0 (start point) and 1 (end point), so x/rec.width value will be between 0 and 1, and be change to %//
+  video.currentTime = percent * video.duration; //change video duration//
+});
+
+
+//top bar animation// //(I used ChatGPT to help me with this part and fix the needed details)//
 {
 const track1 = document.getElementById("topbar"); //take the container that have the text//
-const text1 = document.getElementById("text1"); //the text//
+const text1 = document.getElementById("texttopbar"); //the text//
 
 const original = text1.innerHTML; //save the original text//
 
@@ -42,7 +160,7 @@ function animate1() {
 
   if (x >= 0) {
     x = -track1.scrollWidth / 2;
-  } //when x finish 2 round, x reset to the start point and loop again//
+  } //when x finish half round, x reset to the start point and loop again//
 
   requestAnimationFrame(animate1);
 }
@@ -50,10 +168,10 @@ function animate1() {
 
 animate1 ()
 
-//bottom bar animation
+//bottom bar animation// //(I used ChatGPT to help me with this part and fix the needed details)//
 {
 const track2 = document.getElementById("bottombar"); //take the container that have the text//
-const text2 = document.getElementById("text2"); //the text//
+const text2 = document.getElementById("textbottombar"); //the text//
 
 const original = text2.innerHTML; //save the original text//
 
@@ -87,27 +205,87 @@ fullscreenButton.addEventListener("click", toggleFullscreen);
 
 function toggleFullscreen() {
   if (!document.fullscreenElement) {
-    video.requestFullscreen();
+    player.requestFullscreen();
   } else {
     document.exitFullscreen();
   }
 }
 
 //swapmode//
-const swapButton = document.getElementById ("swap-button")
+const swapButton = document.getElementById ("swap-button");
 console.log(swapButton, video, image);
 
-let isVideoMode = true;
+let isVideoMode = true; //the video will be visible at first, not the image//
 
 swapButton.onclick = () => {
   isVideoMode = !isVideoMode;
 
   if (isVideoMode) {
-    video.style.display = "block";
-    image.style.display = "none";
+    video.style.display = "block"; //if the video is visible//
+    image.style.display = "none"; //then none image//
   } else {
-    video.style.display = "none";
+    video.style.display = "none"; //and the opposite//
     image.style.display = "block";
   }
 };
 
+//loop//
+const loopButton = document.getElementById("loop-button");
+const loopImage = document.getElementById("loop-img");
+console.log(loopButton, loopImage);
+
+let isLooping = false; //no loop at first//
+
+loopButton.onclick = () => {
+  isLooping = !isLooping;
+
+  if (isLooping) {
+    isShuffle = false; //so the 2 modes will work indepently, not be error//
+    loopImage.src = "icons8-loop-on-30.png"; 
+  } else {
+    loopImage.src = "icons8-loop-off-30.png";
+  }
+};
+
+//shuffle//
+const shuffleButton = document.getElementById("shuffle-button");
+const shuffleImage = document.getElementById("shuffle-img");
+console.log(shuffleButton, shuffleImage);
+
+let isShuffle = false; //no shuffle at first//
+
+shuffleButton.onclick = () => {
+  isShuffle = !isShuffle;
+
+  if (isShuffle) {
+    isLooping = false; //so the 2 modes will work indepently, not be error//
+    shuffleImage.src = "icons8-shuffle-on-30.png";
+  } else {
+    shuffleImage.src = "icons8-shuffle-off-30.png";
+  }
+};
+
+//3 different modes will happen (base on the actions) when the one track end//
+video.addEventListener("ended", () => {
+
+  if (isLooping) {
+    video.currentTime = 0;
+    video.play();
+    return; //after that track end, it will return to 0 (start point)//
+  }
+//(I used ChatGPT to help me with this part and fix the needed details)//
+  if (isShuffle) {
+    currentTrack = Math.floor(Math.random() * tracks.length);
+    loadTrack(currentTrack);
+    return;
+  }
+
+  currentTrack++; //if not in loop or shuffle mode, it will automatically move to the next track//
+
+  if (currentTrack >= tracks.length) {
+    currentTrack = 0; //the track will always start at the start point//
+  }
+  loadTrack(currentTrack);
+});
+
+  loadTrack(currentTrack);
