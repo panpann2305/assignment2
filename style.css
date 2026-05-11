@@ -159,6 +159,8 @@ button img,button {
   transition: transform 0.2s ease;
 }
 
+/* The buttons will increase in size when the users hover through it.
+It give a signal that these button can be functioned with.*/
 button:hover img,button:hover {
   transform: scale(1.05);
 }
@@ -205,6 +207,8 @@ button:hover img,button:hover {
   transition: opacity 0.2s;
 }
 
+/* The handle will only appear when you hover at the progress bar area.
+This also give a signal when you are able to use the handle.*/
 .progress-bar:hover #progress-bar-handle {
   opacity: 1;
 }

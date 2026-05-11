@@ -5,7 +5,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Doom</title>
-    <!-- add the font family of your choice -->
     <link rel="icon" href="doom.ico" type="doomicon">
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
@@ -22,16 +21,22 @@
     <div class="background"></div>
 
     <!-- Navigation Section -->
+    <!-- User can click these to navigate to the tracks of their choice.-->
     <nav>
       <ul class="trackbutton">
         <li1><a1 id= "track1btn">Track 1</a1></li1>
         <li2><a2 id= "track2btn">Track 2</a3></li2>
         <li3><a3 id= "track3btn">Track 3</a3></li3>
         <li4><a4 id= "track4btn">Track 4</a4></li4>
-        <!-- Add or remove navigation items as needed -->
       </ul>
     </nav>
-
+    <!-- Main Content Section -->
+    <!-- I added 2 additional function which is the "Swap mode" function and a fullscreen function.
+    The swap mode allow users to switch from the video to the album cover. This create a choice for user
+    if they feel like the video is "too much" for them, they still want to listen to the music but want to
+    look at something calmer.
+    The fullscreen mode will create a better view of the music album page, the bar of the browser will dissapear
+    and it will be better visually."-->
     <div class="main-part">
         <div class="media-player">
             <video id="custom-video-player"> </video>
@@ -58,6 +63,7 @@
                 </button>
             </div>
         </div>
+        <!-- I added 4 more function buttons: Shuffle, Repeat, Next song, Pre song. These are the essential functions for a music album-->
         <div class= "custom-controls">   
             <button id="shuffle-button" class="no-style">
                 <img

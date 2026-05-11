@@ -33,10 +33,12 @@ track4btn.addEventListener("click", (e) => {
 });
 
 const tracks = [
-  {
+  { //since i didn't highlight or underline the navigation path (Track 1 -> Track 4) to give the information of the current track,
+  // I decided to make an animated top bar that shows which track is currently playing. I think this is a better way to show the status and also it matchs with the website's vibe.//
     bartext: "DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING •&nbsp",
     video: "https://thelongesthumstore.sgp1.cdn.digitaloceanspaces.com/IM-2250/miac.mp4",
     background: "doompink.PNG",
+  // The backgrounds are created differently base on the video vibes, patterns and colors. I think this will create an unique format and also feeling for each track.//
   },
   {
     bartext: "DOOM: TRACK 2 IS PLAYING • DOOM: TRACK 2 IS PLAYING • DOOM: TRACK 2 IS PLAYING • DOOM: TRACK 2 IS PLAYING • DOOM: TRACK 2 IS PLAYING • DOOM: TRACK 2 IS PLAYING • DOOM: TRACK 2 IS PLAYING • DOOM: TRACK 2 IS PLAYING • DOOM: TRACK 2 IS PLAYING • DOOM: TRACK 2 IS PLAYING •&nbsp",
@@ -168,34 +170,6 @@ function animate1() {
 
 animate1 ()
 
-//bottom bar animation// //(I used ChatGPT to help me with this part and fix the needed details)//
-{
-const track2 = document.getElementById("bottombar"); //take the container that have the text//
-const text2 = document.getElementById("textbottombar"); //the text//
-
-const original = text2.innerHTML; //save the original text//
-
-while (track2.scrollWidth < window.innerWidth * 3) { //when the width of the track (the text length) is 3 times smaller than the screen size//
-  track2.innerHTML = `<span>${original}</span><span>${original}</span>`; //then it will double reset to make sure the content run smooth//
-}
-
-let y = -track2.scrollWidth / 2; //y start position//
-
-function animate2() {
-  y -= 1.5; //loop, run from right to left, speed 1.5 //
-
-  track2.style.transform = `translateX(${y}px)`; //take element y to transform//
-
-   if (Math.abs(y) >= track2.scrollWidth / 2) {
-    y = 0;
-  } //when y run to the position that is >= width of the track (the text length)/2, then y reset to the start point//
-
-  requestAnimationFrame(animate2);
-}
-}
-
-animate2 ()
-
 
 //fullscreen//
 const fullscreenButton = document.getElementById("fullscreen-button");
@@ -239,6 +213,7 @@ let isLooping = false; //no loop at first//
 loopButton.onclick = () => {
   isLooping = !isLooping;
 
+  // The button will change color when clicked, shows that it is currently be activate//
   if (isLooping) {
     isShuffle = false; //so the 2 modes will work indepently, not be error//
     loopImage.src = "icons8-loop-on-30.png"; 
@@ -257,6 +232,7 @@ let isShuffle = false; //no shuffle at first//
 shuffleButton.onclick = () => {
   isShuffle = !isShuffle;
 
+  // The button will change color when clicked, shows that it is currently be activate//
   if (isShuffle) {
     isLooping = false; //so the 2 modes will work indepently, not be error//
     shuffleImage.src = "icons8-shuffle-on-30.png";
@@ -289,3 +265,34 @@ video.addEventListener("ended", () => {
 });
 
   loadTrack(currentTrack);
+
+  //bottom bar animation// //(I used ChatGPT to help me with this part and fix the needed details)//
+{
+const track2 = document.getElementById("bottombar"); //take the container that have the text//
+const text2 = document.getElementById("textbottombar"); //the text//
+
+const original = text2.innerHTML; //save the original text//
+
+while (track2.scrollWidth < window.innerWidth * 3) { //when the width of the track (the text length) is 3 times smaller than the screen size//
+  track2.innerHTML = `<span>${original}</span><span>${original}</span>`; //then it will double reset to make sure the content run smooth//
+}
+
+let y = -track2.scrollWidth / 2; //y start position//
+
+function animate2() {
+  y -= 1.5; //loop, run from right to left, speed 1.5 //
+
+  track2.style.transform = `translateX(${y}px)`; //take element y to transform//
+
+   if (Math.abs(y) >= track2.scrollWidth / 2) {
+    y = 0;
+  } //when y run to the position that is >= width of the track (the text length)/2, then y reset to the start point//
+
+  requestAnimationFrame(animate2);
+}
+}
+
+animate2 ()
+
+//For the bottom bar, i use the same kind of animation as the top bar but reverse the direction. This create a same aesthetic but still depently provide information so the users won't get confused.
+//The words inside the bottom bar are the adj that describe the vibe of this music album.
