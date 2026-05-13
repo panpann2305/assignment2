@@ -1,4 +1,4 @@
-const player = document.querySelector (".body")
+const player = document.querySelector ("body")
 const video = document.querySelector("#custom-video-player");
 const image = document.querySelector("#image")
 const playPauseBtn = document.querySelector("#play-pause-btn");
@@ -33,25 +33,25 @@ track4btn.addEventListener("click", (e) => {
 });
 
 const tracks = [
-  { //since i didn't highlight or underline the navigation path (Track 1 -> Track 4) to give the information of the current track,
+  { //since i didn't give the information of the current track in the navigation panel,
   // I decided to make an animated top bar that shows which track is currently playing. I think this is a better way to show the status and also it matchs with the website's vibe.//
-    bartext: "DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING •&nbsp",
+    bartext: "dOOM: TRACK 1 IS PLAYING • dOOM: TRACK 1 IS PLAYING • dOOM: TRACK 1 IS PLAYING • dOOM: TRACK 1 IS PLAYING • dOOM: TRACK 1 IS PLAYING • dOOM: TRACK 1 IS PLAYING • dOOM: TRACK 1 IS PLAYING • dOOM: TRACK 1 IS PLAYING • dOOM: TRACK 1 IS PLAYING • dOOM: TRACK 1 IS PLAYING •&nbsp",
     video: "https://thelongesthumstore.sgp1.cdn.digitaloceanspaces.com/IM-2250/miac.mp4",
     background: "doompink.PNG",
   // The backgrounds are created differently base on the video vibes, patterns and colors. I think this will create an unique format and also feeling for each track.//
   },
   {
-    bartext: "DOOM: TRACK 2 IS PLAYING • DOOM: TRACK 2 IS PLAYING • DOOM: TRACK 2 IS PLAYING • DOOM: TRACK 2 IS PLAYING • DOOM: TRACK 2 IS PLAYING • DOOM: TRACK 2 IS PLAYING • DOOM: TRACK 2 IS PLAYING • DOOM: TRACK 2 IS PLAYING • DOOM: TRACK 2 IS PLAYING • DOOM: TRACK 2 IS PLAYING •&nbsp",
+    bartext: "dOOM: TRACK 2 IS PLAYING • dOOM: TRACK 2 IS PLAYING • dOOM: TRACK 2 IS PLAYING • dOOM: TRACK 2 IS PLAYING • dOOM: TRACK 2 IS PLAYING • dOOM: TRACK 2 IS PLAYING • dOOM: TRACK 2 IS PLAYING • dOOM: TRACK 2 IS PLAYING • dOOM: TRACK 2 IS PLAYING • dOOM: TRACK 2 IS PLAYING •&nbsp",
     video: "https://archive.org/download/doomblue/doomblue.mp4",
     background: "doomblue.PNG",
   },
   {
-    bartext: "DOOM: TRACK 3 IS PLAYING • DOOM: TRACK 3 IS PLAYING • DOOM: TRACK 3 IS PLAYING • DOOM: TRACK 3 IS PLAYING • DOOM: TRACK 3 IS PLAYING • DOOM: TRACK 3 IS PLAYING • DOOM: TRACK 3 IS PLAYING • DOOM: TRACK 3 IS PLAYING • DOOM: TRACK 3 IS PLAYING • DOOM: TRACK 3 IS PLAYING •&nbsp",
+    bartext: "dOOM: TRACK 3 IS PLAYING • dOOM: TRACK 3 IS PLAYING • dOOM: TRACK 3 IS PLAYING • dOOM: TRACK 3 IS PLAYING • dOOM: TRACK 3 IS PLAYING • dOOM: TRACK 3 IS PLAYING • dOOM: TRACK 3 IS PLAYING • dOOM: TRACK 3 IS PLAYING • dOOM: TRACK 3 IS PLAYING • dOOM: TRACK 3 IS PLAYING •&nbsp",
     video: "https://archive.org/download/doomyellow/doomyellow.mp4",
     background: "doomyellow.PNG",
   },
   {
-    bartext: "DOOM: TRACK 4 IS PLAYING • DOOM: TRACK 4 IS PLAYING • DOOM: TRACK 4 IS PLAYING • DOOM: TRACK 4 IS PLAYING • DOOM: TRACK 4 IS PLAYING • DOOM: TRACK 4 IS PLAYING • DOOM: TRACK 4 IS PLAYING • DOOM: TRACK 4 IS PLAYING • DOOM: TRACK 4 IS PLAYING • DOOM: TRACK 4 IS PLAYING •&nbsp",
+    bartext: "dOOM: TRACK 4 IS PLAYING • dOOM: TRACK 4 IS PLAYING • dOOM: TRACK 4 IS PLAYING • dOOM: TRACK 4 IS PLAYING • dOOM: TRACK 4 IS PLAYING • dOOM: TRACK 4 IS PLAYING • dOOM: TRACK 4 IS PLAYING • dOOM: TRACK 4 IS PLAYING • dOOM: TRACK 4 IS PLAYING • dOOM: TRACK 4 IS PLAYING •&nbsp",
     video: "https://archive.org/download/doomgreen/doomgreen.mp4",
     background: "doomgreen.PNG",
   }
@@ -118,7 +118,14 @@ function togglePlayPause() {
 
 //progressbar//
 function updateProgressBar() {
-  const value = (video.currentTime / video.duration) * 100;
+  const value =
+    Math.max(
+      0,
+      Math.min(
+        100,
+        (video.currentTime / video.duration) * 100
+      )
+    );
   progressBar.style.width = value + "%"; //change the duratin to %//
   progressBarHandle.style.left = value + "%";
 }

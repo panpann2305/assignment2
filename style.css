@@ -6,26 +6,81 @@
   --main-btn-bg-color: #8a8a8a;
 }
 
-body,
-h1,
-p,
-ul {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
+.layout {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  align-items: start;
+  padding: 110px 40px 40px;
+}
+
+.navigation {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 20px;
+  padding-left: 10px;    
+  gap: 80px;   
+}
+
+/* I add a rotate image here as a highlight spot for the site. This is the album cover logo and it brings and represent the vibe that i want*/
+.rotate-img {
+  animation: spin 5s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.description {
+  background: #333;
+  padding: 20px;
+  margin-left: 190px;
+  margin-right: 190px;
+  margin-bottom: 130px;
+
+}
+h1 {
+  display: inline-block;
+  width: fit-content;
+  padding: 5px 10px;
+  text-align: left;
+  background: linear-gradient(90deg, #ab379a, #1a34db, #ffde39, #47db4e);
+  font-family: "Syne Mono";
+  font-size: 300%;
+}
+
+p {
+  margin-top: 30px;
+  color: white;
+  font-family: "Syne Mono";
+  font-size: 100%;
 }
 
 body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  min-height: 100vh;
+  overflow-y: auto;
+  margin: 0;
+}
+
+html, body {
+  height: auto;
+  min-height: 100%;
+  overflow-y: auto;
 }
 
 .background{
   position: fixed;
-  width: 100%;
-  height: 100vh;
+  inset: 0;
   background-position: center;
   background-repeat: no-repeat;
   z-index: -1;
@@ -35,7 +90,6 @@ body {
 /* Header styling */
 header {
   font-family: "Syne Mono";
-  background-color: var(--main-bg-color);
   color: var(--main-text-color);
   padding: 0px;
   width: 100%;
@@ -44,40 +98,63 @@ header {
 
 /* Top bar */
 #topbar {
-  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
   white-space: nowrap;
-  padding: 5px;
+  background-color: rgba(255, 255, 255, 0.350);
 }
 
 #topbar span {
   display: inline-block;
+  padding: 5px;
 }
 
 /* Navigation styling */
 nav {
-  margin-top: 20px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 nav ul {
   font-family: "Syne Mono";
   list-style: none;
+  padding: 14px 20px;
+  gap: 30px;
+  overflow-y: hidden;
   display: flex;
-  justify-content: center;
-  margin-right: 0px;
-}
-
-nav ul li1,li2,li3 {
-  margin-right: 20px;
+  flex-direction: column;
+  justify-items: space-between;
 }
 
 nav a1,a2,a3,a4 {
+  padding: 14px 20px;
+  background: #333;
+  color: white;
   text-decoration: none;
-  color: var(--main-text-color);
 }
 
-nav a1:hover,nav a2:hover,nav a3:hover,nav a4:hover {
-  color: var(--main-btn-bg-color);
+/* I decided to make the hover colorful to match with the album cover vibe, also it is kinda fun to just interact*/
+nav a1:hover {
+  background: #ab379a;
+  cursor: pointer;
+}
+
+nav a2:hover {
+  background: #1a34db;
+  cursor: pointer;
+}
+
+nav a3:hover {
+  color: black;
+  background: #ffde39;
+  cursor: pointer;
+}
+
+nav a4:hover {
+  color: black;
+  background: #47db4e;
   cursor: pointer;
 }
 
@@ -85,19 +162,20 @@ nav a1:hover,nav a2:hover,nav a3:hover,nav a4:hover {
 .main-part {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-items: space-between;
+  align-items: center; 
+  justify-content: center;
+  width: fit-content;
 }
 
 /* Media player styling */
 .media-player {
-  width: 60%;
+  width: 800px;
   align-content: center;
   margin: 20px 0px 0px 0px;
   position: relative;
 }
 
-.media-player:fullscreen {
+body:fullscreen {
   width: 100vw;
   height: 100vh;
   background: black;
@@ -175,7 +253,7 @@ button:hover img,button:hover {
 
 /* Progress bar */
 .progress-bar {
-  width: 60%;
+  width: 800px;
   height: 10px;
   background-color: #ddd;
   margin-top: 20px;
@@ -200,7 +278,6 @@ button:hover img,button:hover {
   border-radius: 50%;
   position: absolute;
   top: 50%;
-  left: 0%;
   transform: translate(-50%, -50%);
   transition: none;
   opacity: 0;
@@ -224,13 +301,16 @@ footer {
 }
 
 #bottombar {
-  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 9999;
   white-space: nowrap;
-  padding: 5px;
-
+  background-color: rgba(255, 255, 255, 0.350)
 }
 
-#bo†tombar span {
+#bottombar span {
   display: inline-block;
+  padding: 5px;
 }
 

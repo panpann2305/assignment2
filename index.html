@@ -8,28 +8,16 @@
     <link rel="icon" href="doom.ico" type="doomicon">
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
-
   </head>
-  <body class ="body">
-    <!-- Header Section -->
-    <header>
+
+<div class="background"></div>
+
+<body>
+<header>
       <div id= "topbar">
             <span id= "texttopbar">DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING • DOOM: TRACK 1 IS PLAYING •&nbsp;</span>
-        </div>
-    </header>
-
-    <div class="background"></div>
-
-    <!-- Navigation Section -->
-    <!-- User can click these to navigate to the tracks of their choice.-->
-    <nav>
-      <ul class="trackbutton">
-        <li1><a1 id= "track1btn">Track 1</a1></li1>
-        <li2><a2 id= "track2btn">Track 2</a3></li2>
-        <li3><a3 id= "track3btn">Track 3</a3></li3>
-        <li4><a4 id= "track4btn">Track 4</a4></li4>
-      </ul>
-    </nav>
+      </div>
+</header>
     <!-- Main Content Section -->
     <!-- I added 2 additional function which is the "Swap mode" function and a fullscreen function.
     The swap mode allow users to switch from the video to the album cover. This create a choice for user
@@ -37,10 +25,11 @@
     look at something calmer.
     The fullscreen mode will create a better view of the music album page, the bar of the browser will dissapear
     and it will be better visually."-->
+<div class ="layout">
     <div class="main-part">
         <div class="media-player">
             <video id="custom-video-player"> </video>
-            <img id="image" src="doom.png" style="width: 840px; height: auto;"/>
+            <img id="image" src="doom.png"/>
 
             <div class= "buttononscreen">
                 <button id="swap-button" class="no-style">
@@ -110,21 +99,48 @@
                     height="28"
                 />
             </button>
-            
         </div>
         <div class="progress-bar">
             <div id="progress-bar-handle"></div>
             <div id="progress-bar-fill"></div>
         </div>
     </div>
-    <!-- Footer Section -->
-    <footer>
+    <!-- Navigation Section -->
+        <!-- User can click these to navigate to the tracks of their choice.-->   
+    <div class="navigation">
+        <nav>
+            <ul class="trackbutton">
+                <li1><a1 id= "track1btn">1. Track 1: &nbsp&nbsp&nbsp&nbsp 04:00</a1></li1>
+                <li2><a2 id= "track2btn">2. Track 2: &nbsp&nbsp&nbsp&nbsp 02:20</a3></li2>
+                <li3><a3 id= "track3btn">3. Track 3: &nbsp&nbsp&nbsp&nbsp 02:11</a3></li3>
+                <li4><a4 id= "track4btn">4. Track 4: &nbsp&nbsp&nbsp&nbsp 02:42</a4></li4>
+            </ul>
+        </nav>
+        <img class="rotate-img" src="doomclear.png" width="230" height="230"/>
+    </div>
+</div>
+<div class = "description"> <!--I used ChatGPT to generate this description-->
+    <h1> dOOM </h1>
+    <p>
+    dOOM is a music album by Pi A En, an indie musician with a big ambitious. "dOOM" is her work of experimental and techno-inspired chaos, in which intersect to create a unique and highly creative sonic world.
+    </p>
+    <p>
+    Rather than following conventional musical structures, dOOM explores instability, distortion, and digital energy as artistic elements. Each track feels like a fragment of a constantly running system—sometimes ordered, sometimes broken, but always intentional.
+    </p>
+    <p>
+    So when you listen to dOOM, remember to WOOp!
+    </p>
+    <p>
+    © 2026 Pi A En
+    </p>
+</div>
+    <script src="script.js" defer></script>
+<footer>
       <div id= "bottombar">
             <span id= "textbottombar">UNIQUE • UNCONVENTIONAL • LIMITLESS • HIGH-ENERGY • TECHNO-INSPIRED • FUTURISTIC • CHAOTIC • UNRESTRAINED • ENGAGING • MULTI-DIMENSIONAL •&nbsp;</span>
       </div>
-    </footer>
-    <script src="script.js" defer></script>
-  </body>
+</footer>
+</body>
 </html>
 
 
